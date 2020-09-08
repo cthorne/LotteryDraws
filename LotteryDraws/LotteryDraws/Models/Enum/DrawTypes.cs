@@ -1,5 +1,9 @@
-﻿namespace LotteryDraws.Models.Enum
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace LotteryDraws.Models.Enum
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum DrawTypes
     {
         Undefined = 1,
