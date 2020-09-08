@@ -1,5 +1,8 @@
 ﻿using System;
 using LotteryDraws.Models.Enum;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
 namespace LotteryDraws.Models
 {
     public class OpenLotteriesDraw
@@ -11,7 +14,8 @@ namespace LotteryDraws.Models
         /// <summary>
         /// Deprecated.
         /// </summary>
-        public string DrawLogoUrl { get; set; } 
+        public string DrawLogoUrl { get; set; }
+
         public DrawTypes DrawType { get; set; }
         public Decimal Div1Amount { get; set; }
         public bool IsDiv1Estimated { get; set; }
