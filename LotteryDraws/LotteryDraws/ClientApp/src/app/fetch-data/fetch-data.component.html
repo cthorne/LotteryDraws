@@ -2,23 +2,23 @@
 
 <p>This component demonstrates fetching data from the server.</p>
 
-<p *ngIf="!forecasts"><em>Loading...</em></p>
+<p *ngIf="!test"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="forecasts">
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="test">
   <thead>
     <tr>
-      <th>Date</th>
-      <th>Temp. (C)</th>
-      <th>Temp. (F)</th>
-      <th>Summary</th>
+      <th>Draw number</th>
+      <th>Product Id</th>
+      <th>Display name</th>
+      <th>Draw date</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let forecast of forecasts">
-      <td>{{ forecast.date }}</td>
-      <td>{{ forecast.temperatureC }}</td>
-      <td>{{ forecast.temperatureF }}</td>
-      <td>{{ forecast.summary }}</td>
+    <tr *ngFor="let resp of test">
+      <td>{{ resp.drawNumber }}</td>
+      <td>{{ resp.productId }}</td>
+      <td>{{ resp.drawDisplayName }}</td>
+      <td>{{ resp.drawDate | date:'dd/MM/yyyy'}}</td>
     </tr>
   </tbody>
 </table>
