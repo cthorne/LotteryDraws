@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LotteryDraws.Models.Dto;
 using LotteryDraws.Models.Request;
 using LotteryDraws.Models.Response;
 
