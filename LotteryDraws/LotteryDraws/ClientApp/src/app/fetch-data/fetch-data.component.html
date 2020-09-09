@@ -16,7 +16,7 @@
   <tbody>
     <tr *ngFor="let resp of test">
       <td>{{ resp.drawNumber }}</td>
-      <td>{{ resp.productId }}</td>
+      <td><img src={{resp.drawLogoUrl}}></td>
       <td>{{ resp.drawDisplayName }}</td>
       <td>{{ resp.drawDate | date:'dd/MM/yyyy'}}</td>
     </tr>

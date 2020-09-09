@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LotteryDraws.Models.Enum;
 using LotteryDraws.Models.Request;
+using LotteryDraws.Models.Response;
 using LotteryDraws.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -11,7 +12,7 @@ using Microsoft.Extensions.Logging;
 namespace LotteryDraws.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -29,10 +30,20 @@ namespace LotteryDraws.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<WeatherForecast>> Get()
+        public async Task<GetOpenLotteriesDrawsResponse> GetAll()
         {
-            var rng = new Random();
-            var x = await _data.GetOpenLotteriesDrawRequestTask(new GetOpenLotteriesDrawsRequest{CompanyId = LotteriesCompany.Tattersalls, MaxDrawCount = 20});
+            //var rng = new Random();
+
+
+
+            var x = await _data.GetOpenLotteriesDrawRequestTask(new GetOpenLotteriesDrawsRequest{CompanyId = LotteriesCompany.Tattersalls, 
+                MaxDrawCount = 20, 
+                OptionalProductFilter = new List<LotteriesProduct>() {LotteriesProduct.OzLotto}});
+
+            return x;
+
+
+            /*
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
@@ -40,6 +51,15 @@ namespace LotteryDraws.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+            */
+        }
+
+        [HttpGet]
+        public async Task<GetOpenLotteriesDrawsResponse> Get(GetOpenLotteriesDrawsRequest request)
+        {
+            var result = await _data.GetOpenLotteriesDrawRequestTask(request);
+            // TODO: error handling
+            return result;
         }
     }
 }

@@ -1,5 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { DrawTypes } from '../models/draw-types.model';
+import { TattsSvcErrorInfo } from '../models/tatts-svc-error-info.model';
 
 @Component({
   selector: 'app-fetch-data',
@@ -8,11 +10,16 @@ import { HttpClient } from '@angular/common/http';
 export class FetchDataComponent {
   public forecasts: WeatherForecast[];
   public test: OpenLotteriesDraw[];
-
+  public test2: OpenLotteriesDraw[];
+  public selectedProduct;
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<GetOpenLotteriesDrawsResponse>(baseUrl + 'weatherforecast').subscribe(result => {
+    http.get<GetOpenLotteriesDrawsResponse>(baseUrl + 'weatherforecast/GetAll').subscribe(result => {
       this.test = result.openLotteriesDraws;
     }, error => console.error(error));
+
+    /*http.post<GetOpenLotteriesDrawsResponse>(baseUrl + 'weatherforecast/Get', ).subscribe(result => {
+      this.test2 = result.openLotteriesDraws;
+    }, error => console.error(error));*/
   }
 }
 
@@ -23,7 +30,7 @@ interface WeatherForecast {
   summary: string;
 }
 
-
+/* 
 enum DrawTypes {
   Undefined = "Undefined",
   BaseWeek = "BaseWeek",
@@ -39,7 +46,7 @@ enum DrawTypes {
   CashCadeNextDiv = "CashCadeNextDiv",
   CashCadeAllDivs = "CashCadeAllDivs"
 }
-
+ */
 enum LotteriesProduct {
   None = "None",
   TattsLotto = "TattsLotto",
@@ -77,26 +84,18 @@ interface GetOpenLotteriesDrawsRequest {
 }
 
 interface OpenLotteriesDraw {
-  ProductId: LotteriesProduct,
-  DrawNumber: number,
-  DrawDisplayName: string,
-  DrawDate: Date,
-  DrawLogoUrl: string,
-  DrawType: DrawTypes,
-  Div1Amount: number,
-  IsDiv1Estimated: boolean,
-  IsDiv1Unknown: boolean,
-  DrawCloseDateTimeUTC: Date,
-  DrawEndSellDateTimeUTC: Date,
-  DrawCountDownTimerSeconds: number
-}
-
-interface TattsSvcErrorInfo {
-  SystemId: number,
-  ErrorNo: number,
-  DisplayMessage: string,
-  ContactSupport: boolean,
-  SupportErrorReference: string
+  productId: LotteriesProduct,
+  drawNumber: number,
+  drawDisplayName: string,
+  drawDate: Date,
+  drawLogoUrl: string,
+  drawType: DrawTypes,
+  div1Amount: number,
+  isDiv1Estimated: boolean,
+  isDiv1Unknown: boolean,
+  drawCloseDateTimeUTC: Date,
+  drawEndSellDateTimeUTC: Date,
+  drawCountDownTimerSeconds: number
 }
 
 interface GetOpenLotteriesDrawsResponse {
