@@ -6,6 +6,7 @@ import { LotteriesProduct } from '../models/lotteries-product.model';
 import { LotteriesCompany } from '../models/lotteries-company.model';
 import { OpenLotteriesDraw } from '../models/open-lotteries-draw.model';
 import { GetOpenLotteriesDrawsResponse } from '../models/get-open-lotteries-draws-response.model';
+import { GetOpenLotteriesDrawsRequest } from '../models/get-open-lotteries-draw-request.model';
 
 @Component({
   selector: 'app-fetch-data',
@@ -17,13 +18,18 @@ export class FetchDataComponent {
   public test2: OpenLotteriesDraw[];
   public selectedProduct;
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<GetOpenLotteriesDrawsResponse>(baseUrl + 'weatherforecast/GetAll').subscribe(result => {
+    /*http.get<GetOpenLotteriesDrawsResponse>(baseUrl + 'weatherforecast/GetAll').subscribe(result => {
       this.test = result.openLotteriesDraws;
     }, error => console.error(error));
+    */
+    let request = new GetOpenLotteriesDrawsRequest();
+    request.CompanyId = LotteriesCompany.NSWLotteries;
+    request.MaxDrawCount = 20;
+    request.OptionalProductFilter = [LotteriesProduct.SetForLife];
 
-    /*http.post<GetOpenLotteriesDrawsResponse>(baseUrl + 'weatherforecast/Get', ).subscribe(result => {
-      this.test2 = result.openLotteriesDraws;
-    }, error => console.error(error));*/
+    http.post<GetOpenLotteriesDrawsResponse>(baseUrl + 'weatherforecast/Post', request).subscribe(result => {
+      this.test = result.openLotteriesDraws;
+    }, error => console.error(error));
   }
 }
 
