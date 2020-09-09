@@ -3,5 +3,5 @@ export class TattsSvcErrorInfo {
   ErrorNo: number;
   DisplayMessage: string;
   ContactSupport: boolean;
-  SupportErrorReference: string
+  SupportErrorReference: string;
 }
