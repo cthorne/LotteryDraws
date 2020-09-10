@@ -71,5 +71,12 @@ namespace LotteryDrawsTests
             var response = await _lottoService.GetOpenLotteriesDrawRequestTask(_request);
             Assert.IsEmpty(response.OpenLotteriesDraws);
         }
+        [Test]
+        public async Task DataLottoService_ReturnsValues_ForOptionalFilter_OzLotto()
+        {
+            _request.OptionalProductFilter = new List<string>() { LotteriesProduct.OzLotto.ToString() };
+            var response = await _lottoService.GetOpenLotteriesDrawRequestTask(_request);
+            Assert.IsNotEmpty(response.OpenLotteriesDraws);
+        }
     }
 }
