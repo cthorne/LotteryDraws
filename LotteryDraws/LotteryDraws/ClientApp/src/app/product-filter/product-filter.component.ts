@@ -9,6 +9,7 @@ import { LotteriesProduct } from '../models/lotteries-product.model';
 export class ProductFilterComponent implements OnInit {
   @Input() selectedProduct: number;
   @Output() productChangedEvent = new EventEmitter<Array<number>>();
+  
   public LotteriesProducts;
   constructor() { 
     this.LotteriesProducts = Object.values(LotteriesProduct).filter(value => typeof value === 'string') as string[];

@@ -13,44 +13,63 @@ import { OpenLotteriesDraw } from '../models/open-lotteries-draw.model';
 })
 export class HomeComponent {
   selectedProduct: Array<number>;
-  selectedCompany;
-  public test: OpenLotteriesDraw[];
-  public test2: OpenLotteriesDraw[];
-  http:HttpClient;
+  selectedCompany: number = 0;
+  maxDrawCount: number = 100;
+  error: boolean = false;
+  public drawData: OpenLotteriesDraw[];
+  http: HttpClient;
   baseUrl: string;
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    /*http.get<GetOpenLotteriesDrawsResponse>(baseUrl + 'weatherforecast/GetAll').subscribe(result => {
-      this.test = result.openLotteriesDraws;
-    }, error => console.error(error));
-    */
-   this.http = http;
-   this.baseUrl = baseUrl;
-    let request = new GetOpenLotteriesDrawsRequest();
-    request.CompanyId = LotteriesCompany.NSWLotteries;
-    request.MaxDrawCount = 20;
-    request.OptionalProductFilter = this.selectedProduct;
+  errorText: string;
 
-    http.post<GetOpenLotteriesDrawsResponse>(baseUrl + 'weatherforecast/Post', request).subscribe(result => {
-      this.test = result.openLotteriesDraws;
-    }, error => console.error(error));
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+   this.http = http;
+   this.baseUrl = baseUrl;    
   }
+
   updateValues(value: Array<number>) {
     this.selectedProduct = value;
-    this.recallC();
+    this.repopulate();
   }
 
   updateCompanyValues(value: number) {
     this.selectedCompany = value;
-    this.recallC();
+    this.repopulate();
   }
 
-  recallC() {
+  repopulate() {
     let request = new GetOpenLotteriesDrawsRequest();
     request.CompanyId = this.selectedCompany;
-    request.MaxDrawCount = 20;
+    request.MaxDrawCount = this.maxDrawCount;
     request.OptionalProductFilter = this.selectedProduct;
     this.http.post<GetOpenLotteriesDrawsResponse>(this.baseUrl + 'weatherforecast/Post2', request).subscribe(result => {
-      this.test = result.openLotteriesDraws;
-    }, error => console.error(error));
+      if (!result.success)
+      {
+        this.genericErrorHandling();
+      } else {
+      this.error = false;
+      this.drawData = result.openLotteriesDraws;
+      }
+    }, error => this.errorHandling(error));
+  }
+
+  resetInput() {
+    this.selectedCompany = null;
+    this.selectedProduct = null;
+
+    this.repopulate();
+  }
+
+  genericErrorHandling() {
+    this.error = true;
+    if (this.selectedCompany)
+    {
+    this.errorText = 'An error has occurred. Please reload the page or view the console for more info.';
+    } else {
+      this.errorText = 'Please choose a company, as it is required';
+    }
+  }
+  errorHandling(error) {
+    console.error(error);
+    this.genericErrorHandling();
   }
 }
