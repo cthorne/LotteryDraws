@@ -21,14 +21,14 @@ namespace LotteryDraws.Services
         }
         public async Task<GetOpenLotteriesDrawsResponse> GetOpenLotteriesDrawRequestTask(GetOpenLotteriesDrawsRequest request)
         {
-            var test = await _httpClientHelperService.PostAsync<GetOpenLotteriesDrawsResponse>(_httpClient, "/data/lotto/opendraws", request);
-            return test;
+            var response = await _httpClientHelperService.PostAsync<GetOpenLotteriesDrawsResponse>(_httpClient, "/data/lotto/opendraws", request);
+            return response;
         }
 
         public async Task<GetOpenLotteriesDrawsResponse> GetOpenLotteriesDrawRequestTask(GetOpenLotteriesRequestDto request)
         {
-            var test = await _httpClientHelperService.PostAsync<GetOpenLotteriesDrawsResponse>(_httpClient, "/data/lotto/opendraws", request);
-            return test;
+            var response = await _httpClientHelperService.PostAsync<GetOpenLotteriesDrawsResponse>(_httpClient, "/data/lotto/opendraws", request);
+            return response;
         }
     }
 }
