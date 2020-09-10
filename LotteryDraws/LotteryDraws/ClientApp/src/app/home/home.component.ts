@@ -41,7 +41,7 @@ export class HomeComponent {
     request.CompanyId = this.selectedCompany;
     request.MaxDrawCount = this.maxDrawCount;
     request.OptionalProductFilter = this.selectedProduct;
-    this.http.post<GetOpenLotteriesDrawsResponse>(this.baseUrl + 'weatherforecast/Post2', request).subscribe(result => {
+    this.http.post<GetOpenLotteriesDrawsResponse>(this.baseUrl + 'OpenLotteriesDraws/Post', request).subscribe(result => {
       if (!result.success)
       {
         this.genericErrorHandling();
