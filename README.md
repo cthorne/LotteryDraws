@@ -26,6 +26,7 @@ Unit tests on Angular front-end to check appearances should be developed<br/>
 Further unit testing on the backend services<br/>
 Pagination for results, customisable number of results field (depending on requirement, may not want users to adjust)<br/>
 Split into further projects, ie services addition, to contain helpers/service/ for more seperation (and add a data layer proj)
+Could potentially split into a more distinct web api solution and a front-end JS one
 </p>
 <strong>Notes:</strong>
 <p>
