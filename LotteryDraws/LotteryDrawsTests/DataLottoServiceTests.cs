@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using LotteryDraws.Models.Dto;
 using LotteryDraws.Models.Enum;
 using LotteryDraws.Models.Request;
 using LotteryDraws.Services;
@@ -13,8 +15,8 @@ namespace LotteryDrawsTests
     public class DataLottoServiceTests
     {
         private DataLottoService _lottoService;
-        private GetOpenLotteriesDrawsRequest _request;
-
+        private GetOpenLotteriesRequestDto _request;
+        private readonly string TattersallsId = "1";
 
         [SetUp]
         public void Setup()
@@ -23,9 +25,9 @@ namespace LotteryDrawsTests
             HttpClientHelper clientHelper = new HttpClientHelper();
             _lottoService = new DataLottoService(client, clientHelper);
 
-            _request = new GetOpenLotteriesDrawsRequest
+            _request = new GetOpenLotteriesRequestDto()
             {
-                CompanyId = LotteriesCompany.Tattersalls, MaxDrawCount = 20
+                CompanyId = TattersallsId, MaxDrawCount = 20
             };
         }
 
@@ -57,9 +59,17 @@ namespace LotteryDrawsTests
         [Test]
         public async Task DataLottoService_ReturnsFailure_ForCompany_None()
         {
-            _request.CompanyId = LotteriesCompany.None;
+            _request.CompanyId = LotteriesCompany.None.ToString();
             var response = await _lottoService.GetOpenLotteriesDrawRequestTask(_request);
             Assert.IsFalse(response.Success);
+        }
+
+        [Test]
+        public async Task DataLottoService_ReturnsZero_ForOptionalFilter_None()
+        {
+            _request.OptionalProductFilter = new List<string>(){"0"};
+            var response = await _lottoService.GetOpenLotteriesDrawRequestTask(_request);
+            Assert.IsEmpty(response.OpenLotteriesDraws);
         }
     }
 }
