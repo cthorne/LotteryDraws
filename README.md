@@ -5,6 +5,9 @@
 Project was created with Visual Studio 2019, with Angular and .Net Core compatability installed.
 This should be able to be run directly from VS, launching the website and MVC/API backend at the same time without issue.
   </p>
+  <p>
+  npm install may need to be run in the console, inside of the LotteryDraws\LotteryDraws\LotteryDraws\ClientApp directory
+  </p>
 
 __Installed Angular CLI version:__
 <p>
