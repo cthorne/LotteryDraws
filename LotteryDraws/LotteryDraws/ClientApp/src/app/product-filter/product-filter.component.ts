@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { LotteriesProduct } from '../models/lotteries-product.model';
-import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-product-filter',
@@ -8,14 +7,18 @@ import { stringify } from 'querystring';
   styleUrls: ['./product-filter.component.css']
 })
 export class ProductFilterComponent implements OnInit {
-  selectedProduct: number;
+  @Input() selectedProduct: number;
+  @Output() productChangedEvent = new EventEmitter<Array<number>>();
   public LotteriesProducts;
   constructor() { 
     this.LotteriesProducts = Object.values(LotteriesProduct).filter(value => typeof value === 'string') as string[];
-    this.selectedProduct = 0; // None
   }
 
   ngOnInit() {
+  }
+
+  onValueChanged(value: Array<number>) {
+    this.productChangedEvent.emit(value)
   }
 
 }

@@ -13,5 +13,26 @@
 </ul>
 <p>The <code>ClientApp</code> subdirectory is a standard Angular CLI application. If you open a command prompt in that directory, you can run any <code>ng</code> command (e.g., <code>ng test</code>), or use <code>npm</code> to install extra packages into it.</p>
 
-<app-product-filter></app-product-filter>
-<app-company-filter></app-company-filter>
+{{selectedProduct}}
+<app-product-filter [selectedProduct]="selectedProduct" (productChangedEvent)="updateValues($event)"></app-product-filter>
+{{selectedCompany}}
+<app-company-filter [selectedCompany]="selectedCompany" (companyChangedEvent)="updateCompanyValues($event)"></app-company-filter>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="test">
+  <thead>
+    <tr>
+      <th>Draw number</th>
+      <th>Product Id</th>
+      <th>Display name</th>
+      <th>Draw date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let resp of test">
+      <td>{{ resp.drawNumber }}</td>
+      <td><img src={{resp.drawLogoUrl}}></td>
+      <td>{{ resp.drawDisplayName }}</td>
+      <td>{{ resp.drawDate | date:'dd/MM/yyyy'}}</td>
+    </tr>
+  </tbody>
+</table>
