@@ -60,20 +60,22 @@ export class HomeComponent {
   }
 
   genericErrorHandling(result) {
-    this.error = true;
-    this.drawData = null;
     console.error(result);
-    if (this.selectedCompany)
-    {
-    this.errorText = 'An error has occurred. Please reload the page or view the console for more info.';
-    } else {
-      this.errorText = 'Please choose a company, as it is required';
-    }
+    this.showErrorMsg();
   }
   errorHandling(error) {
     console.error(error);
+    this.showErrorMsg();
+  }
+
+  showErrorMsg() {
     this.error = true;
     this.drawData = null;
-    this.errorText = 'An error has occurred in the UI. Please reload the page or view the console for more info.';
+    if (this.selectedCompany)
+    {
+      this.errorText = 'An error has occurred. Please reload the page or view the console for more info.';
+    } else {
+      this.errorText = 'Please choose a company, as it is required';
+    }
   }
 }

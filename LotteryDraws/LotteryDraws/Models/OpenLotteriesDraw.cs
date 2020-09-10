@@ -1,7 +1,5 @@
 ﻿using System;
 using LotteryDraws.Models.Enum;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace LotteryDraws.Models
 {

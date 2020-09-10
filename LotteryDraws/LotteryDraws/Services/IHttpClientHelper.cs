@@ -1,7 +1,5 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using LotteryDraws.Models.Request;
-using LotteryDraws.Models.Response;
 
 namespace LotteryDraws.Services
 {

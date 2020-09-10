@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using LotteryDraws.Models.Enum;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using System.Collections.Generic;
 
 namespace LotteryDraws.Models.Dto
 {

@@ -5,7 +5,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using LotteryDraws.Models.Dto;
 using LotteryDraws.Models.Enum;
-using LotteryDraws.Models.Request;
 using LotteryDraws.Services;
 using NUnit.Framework;
 
@@ -62,6 +61,16 @@ namespace LotteryDrawsTests
             _request.CompanyId = LotteriesCompany.None.ToString();
             var response = await _lottoService.GetOpenLotteriesDrawRequestTask(_request);
             Assert.IsFalse(response.Success);
+        }
+
+
+        [Test]
+        public async Task DataLottoService_ReturnsFailureWithErrorInfoPopulated_ForCompany_None()
+        {
+            _request.CompanyId = LotteriesCompany.None.ToString();
+            var response = await _lottoService.GetOpenLotteriesDrawRequestTask(_request);
+            Assert.IsFalse(response.Success);
+            Assert.NotNull(response.ErrorInfo);
         }
 
         [Test]

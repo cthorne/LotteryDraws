@@ -21,7 +21,6 @@ namespace LotteryDraws.Controllers
         public async Task<GetOpenLotteriesDrawsResponse> Post(GetOpenLotteriesRequestDto request)
         {
             var result = await _data.GetOpenLotteriesDrawRequestTask(request);
-            // TODO: error handling
             return result;
         }
     }

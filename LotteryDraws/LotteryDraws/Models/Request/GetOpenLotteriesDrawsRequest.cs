@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using LotteryDraws.Models.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace LotteryDraws.Models.Request
 {
-    //[Serializable]
     public class GetOpenLotteriesDrawsRequest
     {
         [JsonConverter(typeof(StringEnumConverter))]
