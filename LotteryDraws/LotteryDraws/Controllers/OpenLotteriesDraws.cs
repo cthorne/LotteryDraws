@@ -2,12 +2,14 @@
 using LotteryDraws.Models.Dto;
 using LotteryDraws.Models.Response;
 using LotteryDraws.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LotteryDraws.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
+    [AllowAnonymous]
     public class OpenLotteriesDraws : ControllerBase
     {
         private readonly IDataLottoService _data;
