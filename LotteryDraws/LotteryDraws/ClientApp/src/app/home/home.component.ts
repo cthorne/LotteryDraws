@@ -61,6 +61,7 @@ export class HomeComponent {
 
   genericErrorHandling() {
     this.error = true;
+    this.drawData = null;
     if (this.selectedCompany)
     {
     this.errorText = 'An error has occurred. Please reload the page or view the console for more info.';
