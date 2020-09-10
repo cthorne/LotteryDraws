@@ -44,7 +44,7 @@ export class HomeComponent {
     this.http.post<GetOpenLotteriesDrawsResponse>(this.baseUrl + 'OpenLotteriesDraws/Post', request).subscribe(result => {
       if (!result.success)
       {
-        this.genericErrorHandling();
+        this.genericErrorHandling(result);
       } else {
       this.error = false;
       this.drawData = result.openLotteriesDraws;
@@ -59,9 +59,10 @@ export class HomeComponent {
     this.repopulate();
   }
 
-  genericErrorHandling() {
+  genericErrorHandling(result) {
     this.error = true;
     this.drawData = null;
+    console.error(result);
     if (this.selectedCompany)
     {
     this.errorText = 'An error has occurred. Please reload the page or view the console for more info.';
@@ -71,6 +72,8 @@ export class HomeComponent {
   }
   errorHandling(error) {
     console.error(error);
-    this.genericErrorHandling();
+    this.error = true;
+    this.drawData = null;
+    this.errorText = 'An error has occurred in the UI. Please reload the page or view the console for more info.';
   }
 }
