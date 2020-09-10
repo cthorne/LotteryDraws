@@ -28,6 +28,7 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { ProductFilterComponent } from './product-filter/product-filter.component';
+import { CompanyFilterComponent } from './company-filter/company-filter.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ProductFilterComponent } from './product-filter/product-filter.componen
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    ProductFilterComponent
+    ProductFilterComponent,
+    CompanyFilterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

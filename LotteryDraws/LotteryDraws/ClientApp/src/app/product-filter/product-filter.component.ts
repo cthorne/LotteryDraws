@@ -8,11 +8,11 @@ import { stringify } from 'querystring';
   styleUrls: ['./product-filter.component.css']
 })
 export class ProductFilterComponent implements OnInit {
-  selectedProduct: string;
+  selectedProduct: number;
   public LotteriesProducts;
   constructor() { 
     this.LotteriesProducts = Object.values(LotteriesProduct).filter(value => typeof value === 'string') as string[];
-    this.selectedProduct = 'None';
+    this.selectedProduct = 0; // None
   }
 
   ngOnInit() {

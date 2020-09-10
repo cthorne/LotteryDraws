@@ -1,0 +1,7 @@
+{{selectedCompany}}
+<div class="form-group">
+    <label for="companySel">Company select:</label>
+    <select class="form-control" id="companySel" name="companySel" [(ngModel)]="selectedCompany">
+        <option *ngFor="let value of LotteriesCompanies">{{value}}</option>
+    </select>
+</div>
