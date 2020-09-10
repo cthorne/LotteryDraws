@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LotteryDraws.Models.Dto;
 using LotteryDraws.Models.Enum;
 using LotteryDraws.Models.Request;
 using LotteryDraws.Models.Response;
@@ -41,6 +42,14 @@ namespace LotteryDraws.Controllers
 
         [HttpPost]
         public async Task<GetOpenLotteriesDrawsResponse> Post(GetOpenLotteriesDrawsRequest request)
+        {
+            var result = await _data.GetOpenLotteriesDrawRequestTask(request);
+            // TODO: error handling
+            return result;
+        }
+
+        [HttpPost]
+        public async Task<GetOpenLotteriesDrawsResponse> Post2(GetOpenLotteriesRequestDto request)
         {
             var result = await _data.GetOpenLotteriesDrawRequestTask(request);
             // TODO: error handling

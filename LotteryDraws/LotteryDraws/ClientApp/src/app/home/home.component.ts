@@ -46,10 +46,10 @@ export class HomeComponent {
 
   recallC() {
     let request = new GetOpenLotteriesDrawsRequest();
-    request.CompanyId = LotteriesCompany.NSWLotteries;
+    request.CompanyId = this.selectedCompany;
     request.MaxDrawCount = 20;
     request.OptionalProductFilter = this.selectedProduct;
-    this.http.post<GetOpenLotteriesDrawsResponse>(this.baseUrl + 'weatherforecast/Post', request).subscribe(result => {
+    this.http.post<GetOpenLotteriesDrawsResponse>(this.baseUrl + 'weatherforecast/Post2', request).subscribe(result => {
       this.test = result.openLotteriesDraws;
     }, error => console.error(error));
   }

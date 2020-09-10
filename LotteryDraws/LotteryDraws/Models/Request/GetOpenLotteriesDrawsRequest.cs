@@ -6,12 +6,13 @@ using Newtonsoft.Json.Converters;
 
 namespace LotteryDraws.Models.Request
 {
-    [Serializable]
+    //[Serializable]
     public class GetOpenLotteriesDrawsRequest
     {
         [JsonConverter(typeof(StringEnumConverter))]
         public LotteriesCompany CompanyId { get; set; }
         public int MaxDrawCount { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public IEnumerable<LotteriesProduct> OptionalProductFilter { get; set; }
     }
 }
