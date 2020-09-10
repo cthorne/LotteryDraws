@@ -12,7 +12,7 @@ namespace LotteryDraws.Models.Dto
     {
         public string CompanyId { get; set; }
         public int MaxDrawCount { get; set; }
-        //[JsonConverter(typeof(StringEnumConverter))]
+
         public IEnumerable<string> OptionalProductFilter { get; set; }
     }
 }
