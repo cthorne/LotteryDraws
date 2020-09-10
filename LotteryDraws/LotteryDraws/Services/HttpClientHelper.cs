@@ -35,12 +35,12 @@ namespace LotteryDraws.Services
         public async Task<T> PostAsync<T>(HttpClient client, string url, object input)
         {
             T data;
-            var serializerSettings = new JsonSerializerSettings
+            /*var serializerSettings = new JsonSerializerSettings
             {
                 ContractResolver = new DefaultContractResolver()
-            };
+            };*/
 
-            var contentToSend = JsonConvert.SerializeObject(input, serializerSettings);
+            var contentToSend = JsonConvert.SerializeObject(input);
 
             using (HttpResponseMessage response = await client.PostAsync(client.BaseAddress + url,
                 new StringContent(contentToSend, Encoding.UTF8, JsonApplicationType)))

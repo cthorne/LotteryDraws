@@ -9,6 +9,25 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { PopoverModule } from 'ngx-bootstrap/popover';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { RatingModule } from 'ngx-bootstrap/rating';
+import { SortableModule } from 'ngx-bootstrap/sortable';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { ProductFilterComponent } from './product-filter/product-filter.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +35,8 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    ProductFilterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -26,7 +46,25 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-    ])
+    ]),
+    BrowserAnimationsModule,
+    AccordionModule.forRoot(),
+    AlertModule.forRoot(),
+    ButtonsModule.forRoot(),
+    CarouselModule.forRoot(),
+    CollapseModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    BsDropdownModule.forRoot(),
+    ModalModule.forRoot(),
+    PaginationModule.forRoot(),
+    PopoverModule.forRoot(),
+    ProgressbarModule.forRoot(),
+    RatingModule.forRoot(),
+    SortableModule.forRoot(),
+    TabsModule.forRoot(),
+    TimepickerModule.forRoot(),
+    TooltipModule.forRoot(),
+    TypeaheadModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
