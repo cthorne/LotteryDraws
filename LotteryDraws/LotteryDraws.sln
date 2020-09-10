@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LotteryDraws", "LotteryDraws\LotteryDraws.csproj", "{4D738D16-DA9D-4680-9381-0A4E689134AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LotteryDrawsTests", "LotteryDrawsTests\LotteryDrawsTests.csproj", "{BC977219-885C-4325-800B-37CF9394FE5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LotteryDrawsTests", "LotteryDrawsTests\LotteryDrawsTests.csproj", "{BC977219-885C-4325-800B-37CF9394FE5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LotteryDraws.Services", "LotteryDraws.Services\LotteryDraws.Services.csproj", "{1B7F749C-1033-4FAB-8FB9-D167E2D4E792}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{BC977219-885C-4325-800B-37CF9394FE5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC977219-885C-4325-800B-37CF9394FE5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC977219-885C-4325-800B-37CF9394FE5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B7F749C-1033-4FAB-8FB9-D167E2D4E792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B7F749C-1033-4FAB-8FB9-D167E2D4E792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B7F749C-1033-4FAB-8FB9-D167E2D4E792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B7F749C-1033-4FAB-8FB9-D167E2D4E792}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
