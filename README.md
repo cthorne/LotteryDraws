@@ -25,12 +25,11 @@ Further error handling in backend/frontend for improved resiliency<br/>
 Unit tests on Angular front-end to check appearances should be developed<br/>
 Further unit testing on the backend services<br/>
 Pagination for results, customisable number of results field (depending on requirement, may not want users to adjust)<br/>
-Split into further projects, ie services addition, to contain helpers/service/ for more seperation (and add a data layer proj)
-Could potentially split into a more distinct web api solution and a front-end JS one
+Could potentially split into a more distinct web api solution and a front-end JS one for seperate deployments
 </p>
 <strong>Notes:</strong>
 <p>
-The HTTP Helper method should be tested incidentally through use of the Tatts data service<br/>
+The HTTP Helper method will be tested incidentally through use of the Tatts data service, though ideally this would be independanlty tested as well<br/>
 Tests utilise NUnit<br/>
 Dependancy injection is utilised for ease of use & development<br/>
 Tested primarily on Firefox 80.0.1 (64-bit) (should adapt to mobile with bootstrap)
