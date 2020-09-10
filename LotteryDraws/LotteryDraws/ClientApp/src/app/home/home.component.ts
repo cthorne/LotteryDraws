@@ -53,7 +53,7 @@ export class HomeComponent {
   }
 
   resetInput() {
-    this.selectedCompany = null;
+    this.selectedCompany = 0;
     this.selectedProduct = null;
 
     this.repopulate();

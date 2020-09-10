@@ -25,7 +25,6 @@ namespace LotteryDraws.Services
             return test;
         }
 
-
         public async Task<GetOpenLotteriesDrawsResponse> GetOpenLotteriesDrawRequestTask(GetOpenLotteriesRequestDto request)
         {
             var test = await _httpClientHelperService.PostAsync<GetOpenLotteriesDrawsResponse>(_httpClient, "/data/lotto/opendraws", request);
