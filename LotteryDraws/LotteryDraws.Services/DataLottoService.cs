@@ -10,6 +10,7 @@ namespace LotteryDraws.Services
     {
         private readonly IHttpClientHelper _httpClientHelperService;
         private readonly HttpClient _httpClient;
+        private readonly string _url = "/data/lotto/opendraws";
 
         public DataLottoService(HttpClient client, IHttpClientHelper httpClientHelperService)
         {
@@ -18,13 +19,13 @@ namespace LotteryDraws.Services
         }
         public async Task<GetOpenLotteriesDrawsResponse> GetOpenLotteriesDrawRequestTask(GetOpenLotteriesDrawsRequest request)
         {
-            var response = await _httpClientHelperService.PostAsync<GetOpenLotteriesDrawsResponse>(_httpClient, "/data/lotto/opendraws", request);
+            var response = await _httpClientHelperService.PostAsync<GetOpenLotteriesDrawsResponse>(_httpClient, _url, request);
             return response;
         }
 
         public async Task<GetOpenLotteriesDrawsResponse> GetOpenLotteriesDrawRequestTask(GetOpenLotteriesRequestDto request)
         {
-            var response = await _httpClientHelperService.PostAsync<GetOpenLotteriesDrawsResponse>(_httpClient, "/data/lotto/opendraws", request);
+            var response = await _httpClientHelperService.PostAsync<GetOpenLotteriesDrawsResponse>(_httpClient, _url, request);
             return response;
         }
     }
